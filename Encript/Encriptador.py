@@ -1,5 +1,8 @@
 from cryptography.fernet import Fernet
 import os
+import time
+
+inicio = time.time()
 
 #Generar y guardar clave
 key = Fernet.generate_key()
@@ -27,4 +30,6 @@ encrypted = f.encrypt(original)
 with open ('enc_titanic.csv','wb') as encrypted_file:
     encrypted_file.write(encrypted)
 
+fin = time.time()
 
+print(fin-inicio)
