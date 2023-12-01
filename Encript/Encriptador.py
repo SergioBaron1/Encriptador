@@ -18,16 +18,17 @@ print(key)
 f=Fernet(key)
 
 #Obtener la ruta del archivo grades.csv
-archivo_grades = os.path.join(os.getcwd(),'titanic.csv')
+archivo = os.path.join(os.getcwd(),'../files/titanic.csv')
 
 #Encriptar el contenido del archivo
-with open(archivo_grades,'rb') as original_file:
+with open(archivo,'rb') as original_file:
     original = original_file.read()
 
 encrypted = f.encrypt(original)
 
 #Guardar el archivo encriptado
-with open ('enc_titanic.csv','wb') as encrypted_file:
+target = os.path.join(os.getcwd(),'../results/enc_titanic.csv')
+with open (target,'wb') as encrypted_file:
     encrypted_file.write(encrypted)
 
 fin = time.time()
